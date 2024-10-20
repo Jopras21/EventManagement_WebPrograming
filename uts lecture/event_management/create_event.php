@@ -1,8 +1,6 @@
 <?php
 session_start();
 require_once('db.php');
-
-
 ?>
 
 <!DOCTYPE html>
@@ -65,7 +63,8 @@ require_once('db.php');
                 $stmt->bind_param("sssssiis", $event_name, $date, $time, $location, $description, $max_participants, $available_slots, $image_url);
 
                 if ($stmt->execute()) {
-                    echo "New event created successfully";
+                    header("Location: event_management.php");
+                    exit; 
                 } else {
                     echo "Error: " . $stmt->error;
                 }
