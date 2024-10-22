@@ -32,7 +32,7 @@ $is_admin = $_SESSION['role'] === 'admin';
     <div class="header">
         <h1>Event Management</h1>
         <div class="profile">
-            <a href="profile.php">Profile</a> | 
+            <a href="profile.php">Profile</a> 
             <a href="logout.php" class="logout-btn">Logout</a>
         </div>
     </div>
