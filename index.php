@@ -40,8 +40,8 @@
                 <input type="password" name="password" required>
                 <button type="submit">Register</button>
             </form>
-            <div id="warning2" style="color: #393E46; display: none;">
-                <h5>Email or username already used. Try to use different email or username.</h5>
+            <div id="warning2" style="color: #393E46; display: none; margin-top: 2px; margin-bottom: 0px;">
+                <h5>Email or username already used. Try to use a different email or username.</h5>
             </div>
         </div>
         <div class="user-rl-section" id="login_section">
@@ -69,7 +69,7 @@
     </div>
 
     <script>
-        document.addEventListener("DOMContentLoaded", function(){
+        document.addEventListener("DOMContentLoaded", function() {
             const urlParams = new URLSearchParams(window.location.search);
             const error = urlParams.get('error');
 
@@ -89,7 +89,7 @@
                 document.getElementById("warning1").style.display = "block";
             }
 
-            if (error === 'used'){
+            if (error === 'used') {
                 document.getElementById("register_section").classList.add("active");
                 document.getElementById("login_section").classList.remove("active");
                 document.getElementById("regist_button").classList.add("active");

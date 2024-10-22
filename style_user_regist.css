@@ -13,6 +13,7 @@ html, body {
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    margin: 0;
 }
 
 /* untuk welcome */
@@ -46,6 +47,12 @@ html, body {
 
 .user-regist-welcome-text {
     color: #393E46;
+    margin-top: 0;
+}
+
+.user-regist-welcome-text h2 {
+    color: #393E46;
+    margin-top: 0;
 }
 
 /* button untuk pilih regist atau login */
