@@ -12,7 +12,7 @@
     <div class="user-regist-container">
         <div class="user-regist-welcome">
             <div class="user-regist-welcome-ticket">
-                <img src="ticket1.png" alt="ticket" class="ticket">
+                <img src="./assets/img/ticket1.png" alt="ticket" class="ticket">
             </div>
             <div class="user-regist-welcome-text">
                 <h2>Regist to your favourite event now!</h2>

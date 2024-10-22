@@ -5,6 +5,7 @@
 
 html, body {
     background-color: #c5c5c5;
+    scroll-behavior: smooth;
 }
 
 .user-regist-container {

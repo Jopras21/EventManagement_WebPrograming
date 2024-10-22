@@ -7,6 +7,12 @@ if (!isset($_SESSION['user_id'])) {
     exit();
 }
 
+if ($_SESSION['role'] !== 'admin') {
+    header('location: event_browsing.php');
+    exit;
+}
+
+
 $stmt = $conn->prepare("SELECT * FROM Events ORDER BY date ASC");
 $stmt->execute();
 $result = $stmt->get_result();
