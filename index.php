@@ -1,10 +1,3 @@
-<?php
-    session_start();  
-    if (isset($_SESSION['role'])) {
-        echo 'Role: ' . $_SESSION['role']; 
-    }
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 

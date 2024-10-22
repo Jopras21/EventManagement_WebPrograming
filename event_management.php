@@ -12,8 +12,6 @@ if ($_SESSION['role'] !== 'admin') {
     exit;
 }
 
-echo 'Role: ' . $_SESSION['role'];
-
 $stmt = $conn->prepare("SELECT * FROM Events ORDER BY date ASC");
 $stmt->execute();
 $result = $stmt->get_result();
@@ -79,7 +77,7 @@ $is_admin = $_SESSION['role'] === 'admin';
                     <?php endif; ?>
                 </td>
                 <td class="actions">
-                    <a href="edit_event.php?event_id=<?php echo $event['event_id']; ?>">Edit</a> |
+                    <a href="edit_event.php?event_id=<?php echo $event['event_id']; ?>">Edit</a> 
                     <a href="delete_event.php?event_id=<?php echo $event['event_id']; ?>" class="delete" onclick="return confirm('Are you sure you want to delete this event?');">Delete</a>
                 </td>
             </tr>
@@ -99,6 +97,6 @@ $is_admin = $_SESSION['role'] === 'admin';
     $conn->close();
     ?>
 
-    <script src="scripts.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
