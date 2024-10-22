@@ -57,40 +57,122 @@ p {
   margin-top: 20px;
 }
 
-table {
-  width: 100%;
+/* table */
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #f9fafb;
+  margin: 0;
+  padding: 0;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background-color: #4ade80;
+  color: white;
+}
+
+.profile {
+  font-weight: 600;
+}
+
+.profile a {
+  color: white;
+  text-decoration: none;
+  margin-right: 10px;
+}
+
+.logout-btn {
+  background-color: #ef4444;
+  padding: 10px;
+  border-radius: 5px;
+  font-weight: 600;
+}
+
+.filter {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px auto;
+  max-width: 1200px;
+}
+
+#event-table {
+  width: 90%;
   margin: 20px auto;
   border-collapse: collapse;
-  background-color: white;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  border-radius: 12px;
 }
 
-table img {
-  width: 100%;
-  height: auto;
+#event-table th,
+#event-table td {
+  padding: 15px;
+  border-bottom: 1px solid #ddd;
+  text-align: center;
 }
 
-.event-img {
-  width: 200px;
-  height: auto;
-}
-
-table th,
-table td {
-  padding: 10px;
-  border: 1px solid #ddd;
-  text-align: left;
-}
-
-table th {
+#event-table th {
   background-color: #f4f4f4;
+  font-weight: 600;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 20px;
+#event-table tr:hover {
+  background-color: #f1f5f9;
+  transition: background-color 0.3s;
 }
 
+#event-table img {
+  width: 100px;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.actions a {
+  padding: 10px 15px;
+  margin: 0 5px;
+  color: white;
+  text-decoration: none;
+  background-color: #0ea5e9;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.actions a:hover {
+  background-color: #0284c7;
+}
+
+.actions .delete {
+  background-color: #ef4444;
+}
+
+.actions .delete:hover {
+  background-color: #dc2626;
+}
+
+.create-event {
+  display: block;
+  margin: 20px auto;
+  padding: 12px 24px;
+  background-color: #4ade80;
+  color: white;
+  font-weight: 600;
+  text-transform: uppercase;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.create-event:hover {
+  background-color: #22c55e;
+}
+
+/* msg */
 .error {
   color: red;
   font-weight: bold;

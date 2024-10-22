@@ -15,13 +15,13 @@ $stmt->execute([$username, $email]);
 $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
 if(!$row){
-    header('location: user_registration_authentication.php?error=not_found');
+    header('location: index.php?error=not_found');
     exit;
 } else {
     if(!password_verify($password, $row['password'])){
         setcookie("email", $email, time() + (5), "/");
         setcookie("username", $username, time() + (5), "/");
-        header('location: user_registration_authentication.php?error=wrong_password');
+        header('location: index.php?error=wrong_password');
         exit;
     } else {
         $_SESSION['email'] = $row['email'];
