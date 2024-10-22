@@ -10,19 +10,23 @@
 
 <body>
     <div class="forgot-password-container">
-        <h1>Forgot Password</h1>
-        <h3>Don't worry! We got your back!</h3>
-        <div class="forgot-password-form">
-            <form action="send_email.php" method="POST">
-                <label>Enter your email</label>
-                <input type="email" name="email">
-                <button>Send email</button>
-            </form>
-            <div id="warning3" style="color: #393E46; display: none;">
-                <h5>Email not found. Please use registered email.</h5>
+        <div class="forgot-password-section">
+            <div class="forgot-password-notes">
+                <h1>Forgot Password</h1>
+                <h3>Don't worry! We got your back!</h3>
+            </div>
+            <div class="forgot-password-form">
+                <form action="send_email.php" method="POST">
+                    <label>Enter your email</label>
+                    
+                    <input type="email" name="email">
+                    <button>Send email</button>
+                </form>
+                <div id="warning3" style="color: #393E46; display: none;">
+                    <h5>Email not found. Please use registered email.</h5>
+                </div>
             </div>
         </div>
-
     </div>
     <script>
         const urlParams = new URLSearchParams(window.location.search);

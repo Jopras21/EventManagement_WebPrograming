@@ -15,12 +15,18 @@
     $email = isset($_SESSION['email']) ? $_SESSION['email'] : '';
     ?>
     <div class="enter-otp-container">
-        <h2>Enter OTP</h2>
-        <form action="reset_password.php" method="POST">
-            <input type="" name="email" value="<?php echo htmlspecialchars($email); ?>">
-            <input type="number" name="otp" required>
-            <button type="submit">Submit OTP</button>
-        </form>
+        <div class="enter-otp-section">
+            <div class="enter-otp-notes">
+                <h2>Enter OTP</h2>
+            </div>
+            <div class="enter-otp-form">
+                <form action="reset_password.php" method="POST">
+                    <input type="hidden" name="email" value="<?php echo htmlspecialchars($email); ?>">
+                    <input type="number" name="otp" required>
+                    <button type="submit">Submit OTP</button>
+                </form>
+            </div>
+        </div>
     </div>
 </body>
 

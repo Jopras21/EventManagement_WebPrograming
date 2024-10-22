@@ -154,14 +154,69 @@ input:-webkit-autofill {
 }
 
 /* forgot password pages */
-.forgot-password-container {
+.forgot-password-container, .enter-otp-container {
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
     font-family: font1;
     color: #393E46;
+    margin: 40px;
+    top: 50%;
+    transform: translateY(50%);
 }
-.forgot-password-form {
+
+.forgot-password-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+}
+
+.forgot-password-notes, .enter-otp-notes {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.forgot-password-form form, .enter-otp-form form {
+    margin-top: 20px;
     font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+}
+
+.forgot-password-form input, .enter-otp-form input {
+    border: none;
+    background-color: #bcbcbc;
+    padding: 5px 10px;
+    height: 30px;
+    border-radius: 5px;
+    font-size: 14px;
+    margin: 10px 0 15px;
+    width: 100%;
+    text-align: center;
+}
+
+.forgot-password-form input:focus, .enter-otp-form input:focus {
+    outline: none;
+    text-align: center;
+}
+
+.forgot-password-form button, .enter-otp-form button {
+    margin: 0px;
+    padding: 10px 20px;
+    background-color: #393E46;
+    color: #c5c5c5;
+    border: none;
+    background-color: 0.3s ease, color 0.3s ease;
+    border-radius: 100px;
+}
+
+.forgot-password-form button:hover, .enter-otp-form button:hover {
+    cursor: pointer;
 }
