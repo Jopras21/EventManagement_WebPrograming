@@ -24,8 +24,8 @@ if ($row) {
 $en_pass = password_hash($password, PASSWORD_BCRYPT);
 
 // SQL query
-$sql = "INSERT INTO user (name, username, email, password)
-        VALUES(?, ?, ?, ?)";
+$sql = "INSERT INTO user (name, username, email, password, role)
+        VALUES(?, ?, ?, ?, 'user')";
 
 // execute query
 $result = $dbu->prepare($sql);
