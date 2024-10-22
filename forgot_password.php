@@ -14,12 +14,25 @@
         <h6>Don't worry! We got your back!</h6>
     </div>
     <div class="forgot-password-form">
-        <form action="send_email.php" method="post">
+        <form action="send_email.php" method="POST">
             <label>Enter your email</label>
             <input type="email" name="email">
             <button>Send email</button>
         </form>
+        <div id="warning3" style="color: #393E46; display: none;">
+            <h5>Email not found. Please use registered email.</h5>
+        </div>
+
     </div>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const error = urlParams.get('error');
+        if (error === 'no_account') {
+            document.getElementById("warning3").style.display = "block";
+        }
+    </script>
+
 </body>
 
 </html>
