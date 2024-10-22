@@ -12,6 +12,7 @@ if ($_SESSION['role'] !== 'admin') {
     exit;
 }
 
+echo 'Role: ' . $_SESSION['role'];
 
 $stmt = $conn->prepare("SELECT * FROM Events ORDER BY date ASC");
 $stmt->execute();

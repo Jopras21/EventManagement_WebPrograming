@@ -2,12 +2,11 @@
 session_start();
 require_once('db-user.php');
 
-// Ambil data dari login form
 $email = $_POST['email'];
 $username = $_POST['username'];
 $password = $_POST['password'];
 
-// Periksa data user
+// checking
 $sql = "SELECT * FROM user WHERE username = ? AND email = ?";
 $stmt = $dbu->prepare($sql);
 $stmt->execute([$username, $email]);
@@ -24,16 +23,16 @@ if (!$row) {
         header('location: index.php?error=wrong_password');
         exit;
     } else {
-        // Jika login sukses, simpan session
+
+        $_SESSION['user_id'] = $row['user_id'];
         $_SESSION['email'] = $row['email'];
         $_SESSION['username'] = $row['username'];
-        $_SESSION['role'] = $row['role'];  // Simpan peran pengguna
+        $_SESSION['role'] = $row['role'];  
         
-        // Arahkan berdasarkan peran (role)
         if ($row['role'] === 'admin') {
-            header('location: event_management.php');  // Admin diarahkan ke event management
+            header('location: event_management.php');  
         } else {
-            header('location: event_browsing.php');  // User diarahkan ke event browsing
+            header('location: event_browsing.php');  
         }
         exit;
     }
