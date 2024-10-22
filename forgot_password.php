@@ -14,8 +14,10 @@
         <h6>Don't worry! We got your back!</h6>
     </div>
     <div class="forgot-password-form">
-        <form action="send_otp.php">
-            
+        <form action="send_email.php" method="post">
+            <label>Enter your email</label>
+            <input type="email" name="email">
+            <button>Send email</button>
         </form>
     </div>
 </body>
