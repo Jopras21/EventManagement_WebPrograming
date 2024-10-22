@@ -1,0 +1,153 @@
+@font-face {
+    font-family: font1;
+    src: url(georgiai.ttf);
+}
+
+html, body {
+    background-color: #c5c5c5;
+}
+
+.user-regist-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+/* untuk welcome */
+.user-regist-welcome {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-family: font1;
+}
+
+.user-regist-welcome-ticket {
+    display: inline-block;
+    margin: 0 0.5rem;
+    animation: animation 5s ease infinite;
+}
+
+@keyframes animation {
+    from {
+        transform: scale3d(1, 1, 1);
+    }
+
+    50%{
+        transform: scale3d(1.1, 1.1, 1.1);
+    }
+
+    to {
+        transform: scale3d(1, 1, 1);
+    }
+}
+
+.user-regist-welcome-text {
+    color: #393E46;
+}
+
+/* button untuk pilih regist atau login */
+.user-regist-page-buttons {
+    display: flex;
+    flex-direction: row;
+    background-color: #393E46;
+    padding: 5px;
+    border-radius: 100px;
+}
+
+.user-regist-page-buttons button {
+    margin: 0px;
+    padding: 10px 20px;
+    background-color: transparent;
+    color: #c5c5c5;
+    border: none;
+    background-color: 0.3s ease, color 0.3s ease;
+}
+
+.user-regist-page-buttons button:hover {
+    cursor: pointer;
+}
+
+.user-regist-page-button.active button {
+    background-color: #c5c5c5;
+    color: #393E46;
+    border-radius: 100px;
+}
+
+/* input untuk regist atau login */
+.user-rl-section {
+    margin-top: 15px;
+    display: none;
+    width: 40%;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.user-rl-section.active {
+    display: block;
+}
+
+.user-rl-section form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.user-rl-section label {
+    width: 100%;
+    text-align: left;
+    font-size: 16px;
+}
+
+.user-rl-section input {
+    border: none;
+    background-color: #bcbcbc;
+    padding: 5px 10px;
+    height: 30px;
+    border-radius: 5px;
+    font-size: 14px;
+    margin: 10px 0 15px;
+    width: 100%;
+}
+
+.user-rl-section input:focus {
+    outline: none;
+}
+
+.user-rl-section form button {
+    background-color: #393E46;
+    color: #c5c5c5;
+    border: none;
+    border-radius: 5px;
+    height: 40px;
+    width: 100%;
+}
+
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px #bcbcbc inset !important; 
+}
+
+.user-rl-addition {
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+    color: #393E46;
+    width: 100%;
+}
+
+.user-rl-addition a {
+    color: #393E46;
+    text-decoration: none;
+    font-size: 14px;
+    width: 100%;
+    margin-left: auto;
+    text-align: right;
+}
+
+.user-rl-addition a:hover {
+    text-decoration: underline;
+}
+
+.user-rl-addition a:visited {
+    color: #393E46;
+}
