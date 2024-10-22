@@ -16,7 +16,7 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
 if ($row) {
         setcookie("name", $name, time() + (5), "/");
-        header('location: user_registration_authentication.php?error=used');
+        header('location: index.php?error=used');
         exit;
 }
 
