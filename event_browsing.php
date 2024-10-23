@@ -34,11 +34,11 @@ $events = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 <body>
     <div class="event-browsing-container">
-        <h1>Events for You</h1>        <form method="GET" action="">
-            <input type="text" name="search" placeholder="Search event by name" value="<?php echo htmlspecialchars($search); ?>" />
-            <button type="submit">Search</button>
-        </form>
-
+        <h1>Events for You</h1>   
+        <div class="event-browsing-search">
+            <input type="text" id="event-filter" name="search" placeholder="Search event by name or location" />
+            <button onclick="clearSearch()" class="clear-search">Clear</button>
+        </div>   
         <div class="event-browsing-contents">
             <?php if (count($events) > 0): ?>
                 <?php foreach ($events as $key => $event): ?>
@@ -54,7 +54,9 @@ $events = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
                     <div class="event-browsing-details" id="event-detail-<?php echo $key; ?>">
                         <div class="event-browsing-detail">
-                            <span class="close" onclick="closeDetail(<?php echo $key; ?>)">&times;</span>
+                            <div class="close-button">
+                                <span class="close" id="close" onclick="closeDetail(<?php echo $key; ?>)">&times;</span>
+                            </div>
                             <img src="uploads/<?php echo $event['image_url']; ?>" alt="Image" style="max-width: 360px">
                             <h2><?php echo ($event['event_name']); ?></h2>
                             <p><strong>Date:</strong> <?php echo $date; ?></p>
@@ -73,6 +75,45 @@ $events = $stmt->fetchAll(PDO::FETCH_ASSOC);
     </div>
 
     <script>
+        document.getElementById('event-filter').addEventListener('input', function() {
+            const filter = this.value.toLowerCase();
+            const eventContents = document.querySelectorAll('.event-browsing-content');
+            
+            eventContents.forEach(eventContent => {
+                // Ambil teks yang ingin dicari (nama event dan lokasi)
+                const eventName = eventContent.querySelector('h2').textContent.toLowerCase();
+                const eventLocation = eventContent.textContent.toLowerCase();
+                
+                // Cek apakah teks mengandung kata yang dicari
+                if (eventName.includes(filter) || eventLocation.includes(filter)) {
+                    eventContent.style.display = ''; // Tampilkan event jika cocok
+                    
+                    // Cari detail event yang terkait
+                    const eventId = eventContent.querySelector('.detail-button').getAttribute('onclick').match(/\d+/)[0];
+                    const relatedDetail = document.getElementById('event-detail-' + eventId);
+                    if (relatedDetail) {
+                        relatedDetail.style.display = 'none'; // Sembunyikan detail yang terbuka
+                    }
+                } else {
+                    eventContent.style.display = 'none'; // Sembunyikan event jika tidak cocok
+                    
+                    // Cari dan sembunyikan detail event yang terkait
+                    const eventId = eventContent.querySelector('.detail-button').getAttribute('onclick').match(/\d+/)[0];
+                    const relatedDetail = document.getElementById('event-detail-' + eventId);
+                    if (relatedDetail) {
+                        relatedDetail.style.display = 'none';
+                    }
+                }
+            });
+        });
+
+        // Tambahkan fungsi untuk membersihkan pencarian
+        function clearSearch() {
+            document.getElementById('event-filter').value = '';
+            const event = new Event('input');
+            document.getElementById('event-filter').dispatchEvent(event);
+        }
+
         function showDetail(key) {
             document.getElementById('event-detail-' + key).style.display = 'block';
         }

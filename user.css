@@ -11,12 +11,18 @@ html {
   width: 100%;
   min-height: 100vh;
   transition: all 0.3s ease;
+  background-image: url(https://images.squarespace-cdn.com/content/5e949a92e17d55230cd1d44f/1722782568789-VKAP22T07QVVLBY6JHY7/AI_iPad+2.png?format=1500w&content-type=image%2Fpng);
+  background-size: 100vw 100vh;
+  background-repeat: no-repeat;
 }
 
 .container {
-  background-color: #fff;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background: rgba(158, 153, 153, 0.288);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(7.3px);
+  -webkit-backdrop-filter: blur(7.3px);
+  border: 3px solid rgba(255, 255, 255, 0.56);
   padding: 20px;
   max-width: 900px;
   width: 90%;
