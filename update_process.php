@@ -11,4 +11,7 @@ $sql = "UPDATE user
         WHERE email = ?";
 $stmt = $dbu->prepare($sql);
 $stmt->execute([$newpass, $email]);
+
+header('location: index.php');
+exit();
 ?>

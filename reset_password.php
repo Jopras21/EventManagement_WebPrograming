@@ -18,7 +18,6 @@ if ($row) {
                 <button type="submit">Reset Password</button>
             </form>';
 } else {
-    echo "Invalid OTP. Please try again";
-    echo "$email, $otp";
+    echo "Invalid OTP. Please try again<br>";
     echo '<a href="forgot_password.php">Forgot Password</a>';
 }
