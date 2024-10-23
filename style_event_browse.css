@@ -36,18 +36,20 @@ html, body {
 
 .event-browsing-content {
     display: flex;
-    width: 30%;
+    width: 25%;
     background-color: #bcbcbc;
     margin: 20px;
     flex-direction: column;
     padding: 20px;
+    color: #393e46;
 }
 
 .event-browsing-content h2 {
     margin: 0;
+    font-family: font1;
 }
 
-.detail-button {
+.detail-button, .event-register-button {
     margin-top: 10px;
     padding: 10px 20px;
     background-color: #393E46;
@@ -56,8 +58,17 @@ html, body {
     border-radius: 50px;
 }
 
-.detail-button:hover {
+.detail-button:hover, .event-register-button {
     cursor: pointer;
+}
+
+.event-register-button a {
+    text-decoration: none;
+    color: #c5c5c5;
+}
+
+.event-register-button a:visited {
+    color: #c5c5c5;
 }
 
 .event-browsing-details {
@@ -81,7 +92,6 @@ html, body {
     text-align: center;
     position: relative;
     font-size: 18px;
-
 }
 
 .close {
@@ -91,8 +101,7 @@ html, body {
     font-weight: bold;
 }
 
-.close:hover,
-.close:focus {
+.close:hover, .close:focus {
     color: #393e46;
     text-decoration: none;
     cursor: pointer;
