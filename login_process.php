@@ -30,9 +30,9 @@ if (!$row) {
         $_SESSION['role'] = $row['role'];  
         
         if ($row['role'] === 'admin') {
-            header('location: event_management.php');  
-        } else {
             header('location: admin_dashboard.php');  
+        } else {
+            header('location: event_browsing.php');  
         }
         exit;
     }
