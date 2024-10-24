@@ -79,6 +79,7 @@ $is_admin = $_SESSION['role'] === 'admin';
                 <td class="actions">
                     <a href="edit_event.php?event_id=<?php echo $event['event_id']; ?>">Edit</a> 
                     <a href="delete_event.php?event_id=<?php echo $event['event_id']; ?>" class="delete" onclick="return confirm('Are you sure you want to delete this event?');">Delete</a>
+                    <a href="view_registrants.php?event_id=<?php echo $event['event_id']; ?>">View Registrants</a>
                 </td>
             </tr>
             <?php endwhile; ?>
