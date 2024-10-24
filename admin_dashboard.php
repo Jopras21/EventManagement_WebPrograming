@@ -92,7 +92,7 @@ $username = $_SESSION['username'];
                     echo htmlspecialchars($participation_count);
                     ?>
                 </h2>
-                <h3>events</h3>
+                <h3>events (cumulative)</h3>
             </div>
         </div>
         <div class="admin-dashboard-action-choice">
@@ -103,7 +103,7 @@ $username = $_SESSION['username'];
                         <?php foreach ($events as $event): ?>
                             <div class="event-card">
                                 <h3><?php echo htmlspecialchars($event['event_name']); ?></h3>
-                                <?php echo htmlspecialchars($event['open_events']); ?>
+                                <?php echo htmlspecialchars($event['max_participants'] - $event['available_slots']); ?>
                             </div>
                         <?php endforeach; ?>
                     </div>
