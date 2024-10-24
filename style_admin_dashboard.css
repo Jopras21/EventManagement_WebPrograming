@@ -114,15 +114,26 @@ html, body {
     color: #424874;
 }
 
-.logout-button {
+.admin-btn {
     margin: 20px 0;
-}
-
-.logout-btn {
     text-decoration: none;
-    background-color: rgb(227, 10, 10);
+    background-color: #424874;
     padding: 10px 20px;
-    color: white;
+    color: #F4EEFF;
     margin: 20px 10px;
     border-radius: 15px;
+}
+
+.admin-dashboard-header {
+    display: flex;
+    flex: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.admin-dashboard-button {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
 }

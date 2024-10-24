@@ -45,7 +45,17 @@ $username = $_SESSION['username'];
 
 <body>
     <div class="admin-dashboard-container">
-        <h1>Welcome, <?php echo htmlspecialchars($username); ?>!</h1>
+        <div class="admin-dashboard-header">
+            <h1>Welcome, <?php echo htmlspecialchars($username); ?>!</h1>
+            <div class="admin-dashboard-button">
+                <div class="admin-profile">
+                    <a href="profile.php" class="admin-btn">Profile</a>
+                </div>
+                <div class="logout-button">
+                    <a href="logout.php" class="admin-btn">Logout</a>
+                </div>
+            </div>
+        </div>
         <div class="admin-dashboard-overview">
             <div class="admin-dashboard-open-events">
                 <h3>You have</h3>
@@ -112,9 +122,6 @@ $username = $_SESSION['username'];
             <div class="admin-manage-container">
                 <button><a href="user_management.php" class="admin-manage">Manage User</a></button>
             </div>
-        </div>
-        <div class="logout-button">
-            <a href="logout.php" class="logout-btn">Logout</a>
         </div>
     </div>
 </body>

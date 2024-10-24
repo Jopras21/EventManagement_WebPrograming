@@ -4,16 +4,16 @@ html {
   margin: 0;
   padding: 0;
   font-family: 'Poppins', sans-serif;
-  background-color: #f4f8f5;
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
   min-height: 100vh;
   transition: all 0.3s ease;
-  background-image: url(https://images.squarespace-cdn.com/content/5e949a92e17d55230cd1d44f/1722782568789-VKAP22T07QVVLBY6JHY7/AI_iPad+2.png?format=1500w&content-type=image%2Fpng);
-  background-size: 100vw 100vh;
+  background: rgb(66,72,116);
+  background: linear-gradient(0deg, rgba(66,72,116,1) 0%, rgba(220,214,247,1) 32%, rgba(244,238,255,1) 54%, rgba(166,177,225,1) 100%);  background-size: 100vw 100vh;
   background-repeat: no-repeat;
+  color: #424874;
 }
 
 .container {
@@ -53,7 +53,7 @@ html {
   width: 165px;
   height: 165px;
   object-fit: cover;
-  border: 5px solid #4cb969;
+  border: 5px solid #424874;
   border-radius: 50%;
   transition: transform 0.3s ease;
 }
@@ -71,23 +71,23 @@ html {
 .profile-info h1 {
   font-size: 2rem;
   margin-bottom: 10px;
-  color: #22883d;
+  color: #424874;
   transition: color 0.3s ease;
 }
 
 .profile-info h1:hover {
-  color: #34a853;
+  color: #A6B1E1;
 }
 
 .profile-info p {
   font-size: 1rem;
-  color: #333;
+  color: #424874;
   margin: 5px 0;
   transition: color 0.3s ease;
 }
 
 .profile-info p:hover {
-  color: #4cb969;
+  color: #A6B1E1;
 }
 
 /* Forms and Buttons */
@@ -104,7 +104,7 @@ form input[type='file'] {
 }
 
 form button {
-  background-color: #34a853;
+  background-color: #A6B1E1;
   color: white;
   border: none;
   padding: 10px 15px;
@@ -114,18 +114,18 @@ form button {
 }
 
 form button:hover {
-  background-color: #2a8c43;
+  background-color: #909ac5;
   transform: scale(1.03);
 }
 
 form .delete {
   margin-top: 10px;
-  background-color: rgb(209, 15, 15);
+  background-color: #424874;
   transition: all 0.3s ease-in-out;
 }
 
 form .delete:hover {
-  background-color: rgb(181, 14, 14);
+  background-color: #363b60;
 }
 
 .nav-button {
@@ -136,8 +136,8 @@ form .delete:hover {
 
 .nav-button a {
   text-decoration: none;
-  background-color: #34a853;
-  color: white;
+  background-color: #909ac6;
+  color: #F4EEFF;
   border: none;
   padding: 10px 15px;
   border-radius: 5px;
@@ -146,12 +146,12 @@ form .delete:hover {
 }
 
 .nav-button a:hover {
-  background-color: #2a8c43;
+  background-color: #A6B1E1;
   transform: scale(1.03);
 }
 
 .nav-button .logout-btn {
-  background-color: red;
+  background-color: #424874;
 }
 
 /* Profile Events Section */

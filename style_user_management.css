@@ -40,6 +40,16 @@ body {
   margin: 25px 0;
 }
 
+.event-browsing-search input {
+  width: 35%;
+  padding: 10px;
+  border: 1px solid #424874;
+  border-radius: 20px;
+  border-radius: 4px;
+  background-color: #F4EEFF;
+  color: #424874;
+}
+
 #event-filter {
   padding: 12px 15px;
   border-radius: 8px;

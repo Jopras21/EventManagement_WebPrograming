@@ -35,7 +35,7 @@ $participation = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <body>
     <h1>View Event Registered by User</h1>
     <div class="event-browsing-search">
-        <input type="text" id="event-filter" name="search" placeholder="Search event by name or location" />
+        <input type="text" id="event-filter" name="search" placeholder="Search user by name or username" />
         <button onclick="clearSearch()" class="clear-search">Clear</button>
     </div>  
 

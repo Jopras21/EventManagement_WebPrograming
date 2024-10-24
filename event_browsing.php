@@ -2,22 +2,10 @@
 session_start();
 require_once('db-user.php');
 
-$search = isset($_GET['search']) ? trim($_GET['search']) : '';
-
 $sql = "SELECT event_id, event_name, date, time, location, description, max_participants, available_slots, image_url, status
         FROM events
         WHERE status = 'open' AND date >= CURDATE()";
-
-if (!empty($search)) {
-    $sql .= " AND event_name LIKE :search";
-}
-
 $stmt = $dbu->prepare($sql);
-
-if (!empty($search)) {
-    $stmt->bindValue(':search', "%$search%");
-}
-
 $stmt->execute();
 $events = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
