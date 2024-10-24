@@ -89,11 +89,6 @@ $is_admin = $_SESSION['role'] === 'admin';
         <p>No events available.</p>
     <?php endif; ?>
 
-    <?php if ($is_admin): ?>
-        <a href="create_event.php" class="create-event">Create New Event</a>
-        <a href="user_management.php" class="manage-user">Manage User</a>
-    <?php endif; ?>
-
     <?php
     $stmt->close();
     $conn->close();

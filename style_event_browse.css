@@ -71,6 +71,10 @@ body {
   color: #424874;
 }
 
+.event-browsing-search input:focus {
+  outline: none;
+}
+
 .event-browsing-search button {
   right: 10px;
   top: 50%;
