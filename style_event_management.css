@@ -134,6 +134,8 @@ label {
   }
   
   .actions a {
+    display: flex;
+    align-items: center;
     padding: 10px 15px;
     margin: 0 5px;
     color: #F4EEFF;

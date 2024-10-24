@@ -1,0 +1,226 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --primary-color: #424874;
+  --secondary-color: #a6b1e1;
+  --background-color: #f4eeff;
+  --card-background: #dcd6f7;
+  --transition-speed: 0.3s;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--background-color);
+  color: var(--primary-color);
+  padding: 20px;
+  line-height: 1.6;
+}
+
+/* Alert Styles */
+.alert {
+  background-color: var(--secondary-color);
+  color: white;
+  padding: 15px;
+  border-radius: 5px;
+  margin: 20px auto;
+  width: 80%;
+  text-align: center;
+}
+
+/* Search Section */
+.event-browsing-search {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  padding: 8px;
+  margin: 25px 0;
+}
+
+#event-filter {
+  padding: 12px 15px;
+  border-radius: 8px;
+  border: 2px solid var(--secondary-color);
+  font-size: 1.1rem;
+  color: var(--primary-color);
+  width: 40%;
+  transition: all var(--transition-speed) ease;
+}
+
+#event-filter:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 5px rgba(66, 72, 116, 0.3);
+}
+
+.clear-search {
+  padding: 12px 20px;
+  border-radius: 8px;
+  border: none;
+  font-size: 1.1rem;
+  color: white;
+  background-color: var(--secondary-color);
+  cursor: pointer;
+  transition: all var(--transition-speed) ease;
+}
+
+.clear-search:hover {
+  background-color: var(--primary-color);
+  transform: translateY(-2px);
+}
+
+/* Content Container */
+.user-management-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 25px;
+  padding: 20px;
+}
+
+.event-browsing-content {
+  background-color: var(--card-background);
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all var(--transition-speed) ease;
+}
+
+.event-browsing-content:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Custom Details/Summary Styling */
+.custom-details {
+  margin: 15px 0;
+}
+
+.custom-details summary {
+  font-weight: 600;
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 6px;
+  background-color: var(--secondary-color);
+  color: white;
+  transition: all var(--transition-speed) ease;
+  position: relative;
+}
+
+.custom-details summary:hover {
+  background-color: var(--primary-color);
+}
+
+.custom-details summary::after {
+  content: '▼';
+  position: absolute;
+  right: 10px;
+  transform: rotate(0);
+  transition: transform var(--transition-speed) ease;
+}
+
+.custom-details[open] summary::after {
+  transform: rotate(180deg);
+}
+
+.details-content {
+  padding: 15px;
+  margin-top: 10px;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 6px;
+  animation: slideDown var(--transition-speed) ease;
+}
+
+details[open] summary ~ * {
+  font-weight: bold;
+  cursor: pointer;
+  margin-bottom: 10px;
+  font-size: 1.1rem;
+  color: #424874;
+  animation: slideDown 0.5s ease-in-out;
+}
+
+details ul {
+  margin-left: 20px;
+  list-style-type: disc;
+}
+
+details ul li {
+  margin-bottom: 5px;
+  color: #424874;
+}
+
+@keyframes sweep {
+  0% {
+    opacity: 0;
+    margin-left: -10px;
+  }
+  100% {
+    opacity: 1;
+    margin-left: 0px;
+  }
+}
+
+@keyframes slideDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Delete Button */
+.delete-btn {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #ff6b6b;
+  color: white;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: 600;
+  transition: all var(--transition-speed) ease;
+  border: none;
+  cursor: pointer;
+  margin-top: 15px;
+}
+
+.delete-btn:hover {
+  background-color: #ff5252;
+  transform: translateY(-2px);
+}
+
+/* Typography */
+h1 {
+  color: var(--primary-color);
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 2.2rem;
+  font-weight: 700;
+}
+
+h2 {
+  font-size: 1.6rem;
+  color: var(--primary-color);
+  margin-bottom: 15px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .event-browsing-search {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #event-filter {
+    width: 90%;
+  }
+
+  .user-management-container {
+    grid-template-columns: 1fr;
+  }
+}
