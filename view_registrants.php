@@ -45,7 +45,6 @@ if (isset($_POST['export_csv'])) {
     exit();
 }
 
-// Fetch registrants
 $stmt = $conn->prepare("
     SELECT user.username, user.email 
     FROM registrations 
@@ -59,62 +58,74 @@ $result = $stmt->get_result();
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>View Registrants</title>
     <link rel="stylesheet" href="style.css">
     <style>
-        /* General styling for the page */
+        @font-face {
+            font-family: font1;
+            src: url(georgiai.ttf);
+        }
+
         body {
             font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
+            background-color: #DCD6F7;
             margin: 0;
             padding: 0;
             display: flex;
             flex-direction: column;
             align-items: center;
+            color: #424874;
         }
 
         .header {
-            background-color: #28a745;
+            background-color: #424874;
             width: 100%;
             padding: 20px;
             text-align: center;
-            color: white;
+            color: #F4EEFF;
             position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         .header a {
-            color: #ffffff;
+            color: #F4EEFF;
             text-decoration: none;
             font-size: 14px;
             position: absolute;
-            right: 20px;
-            top: 20px;
+            left: 50px;
+            top: 30px;
         }
 
         h1 {
             margin: 0;
             font-size: 28px;
+            color: #F4EEFF;
+            font-family: font1;
         }
 
         h2 {
             margin-top: 10px;
-            color: #444;
+            color: #424874;
         }
 
         table {
             margin-top: 20px;
             border-collapse: collapse;
             width: 80%;
-            background-color: #ffffff;
+            background-color: #F4EEFF;
             border-radius: 8px;
             overflow: hidden;
             box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
         }
 
-        table th, table td {
+        table th,
+        table td {
             padding: 12px 15px;
             border: 1px solid #ddd;
             text-align: center;
@@ -130,14 +141,20 @@ $result = $stmt->get_result();
             background-color: #f9f9f9;
         }
 
-        /* Styling for the CSV export button */
         form {
+            max-width: 600px;
             margin-top: 20px;
+            background: none;
+            padding: 20px;
+            box-shadow: none;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
         }
 
         button[name="export_csv"] {
-            background-color: #28a745;
-            color: white;
+            background-color: #424874;
+            color: #F4EEFF;
             border: none;
             padding: 10px 20px;
             font-size: 16px;
@@ -147,14 +164,15 @@ $result = $stmt->get_result();
         }
 
         button[name="export_csv"]:hover {
-            background-color: #218838;
+            background-color: #A6B1E1;
         }
     </style>
 </head>
+
 <body>
     <div class="header">
+        <a href="event_management.php">Back</a>
         <h1>Event Registrants</h1>
-        <a href="event_management.php">Back to Dashboard</a>
     </div>
 
     <!-- Display event name -->
@@ -170,10 +188,10 @@ $result = $stmt->get_result();
             </thead>
             <tbody>
                 <?php while ($row = $result->fetch_assoc()): ?>
-                <tr>
-                    <td><?php echo htmlspecialchars($row['username']); ?></td>
-                    <td><?php echo htmlspecialchars($row['email']); ?></td>
-                </tr>
+                    <tr>
+                        <td><?php echo htmlspecialchars($row['username']); ?></td>
+                        <td><?php echo htmlspecialchars($row['email']); ?></td>
+                    </tr>
                 <?php endwhile; ?>
             </tbody>
         </table>
@@ -191,10 +209,5 @@ $result = $stmt->get_result();
     $conn->close();
     ?>
 </body>
-</html>
 
-    $stmt->close();
-    $conn->close();
-    ?>
-</body>
 </html>
