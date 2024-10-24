@@ -32,7 +32,7 @@ if (!$row) {
         if ($row['role'] === 'admin') {
             header('location: event_management.php');  
         } else {
-            header('location: event_browsing.php');  
+            header('location: admin_dashboard.php');  
         }
         exit;
     }

@@ -29,11 +29,11 @@ $is_admin = $_SESSION['role'] === 'admin';
     <title>Event Management</title>
 </head>
 <body>
-    <div class="header">
+    <div class="event-management-header">
         <h1>Event Management</h1>
         <div class="profile">
-            <a href="profile.php">Profile</a> 
-            <a href="logout.php" class="logout-btn">Logout</a>
+            <a href="admin_dashboard.php" class="create-event">Return to Dashboard</a> 
+            <a href="create_event.php" class="create-event">Create New Event</a> 
         </div>
     </div>
 
@@ -88,12 +88,7 @@ $is_admin = $_SESSION['role'] === 'admin';
     <?php else: ?>
         <p>No events available.</p>
     <?php endif; ?>
-
-    <?php if ($is_admin): ?>
-        <a href="create_event.php" class="create-event">Create New Event</a>
-        <a href="user_management.php" class="manage-user">Manage User</a>
-    <?php endif; ?>
-
+    
     <?php
     $stmt->close();
     $conn->close();
