@@ -211,9 +211,3 @@ $result = $stmt->get_result();
 </body>
 
 </html>
-
-    $stmt->close();
-    $conn->close();
-    ?>
-</body>
-</html>
