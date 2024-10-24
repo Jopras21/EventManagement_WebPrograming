@@ -5,7 +5,7 @@
 
 html,
 body {
-  background-color: #c5c5c5;
+  background-color: #F4EEFF;
   scroll-behavior: smooth;
 }
 
@@ -15,7 +15,7 @@ body {
 }
 
 .event-browsing-container h1 {
-  color: #393e46;
+  color: #424874;
   font-family: font1;
   font-size: 60px;
   font-weight: bold;
@@ -38,11 +38,12 @@ body {
 .event-browsing-content {
   display: flex;
   width: 25%;
-  background-color: #bcbcbc;
+  background-color: #DCD6F7;
   margin: 20px;
   flex-direction: column;
   padding: 20px;
-  color: #393e46;
+  color: #424874;
+  border-radius: 20px;
 }
 
 .event-browsing-content h2 {
@@ -52,24 +53,27 @@ body {
 
 .event-browsing-search {
   display: flex;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
   position: relative;
   margin-bottom: 20px;
+  margin-top: 30px;
 }
 
 .event-browsing-search input {
   width: 35%;
   padding: 10px;
-  border: 1px solid #ddd;
+  border: 1px solid #424874;
   border-radius: 20px;
   border-radius: 4px;
+  background-color: #F4EEFF;
+  color: #424874;
 }
 
 .event-browsing-search button {
   right: 10px;
   top: 50%;
-  background-color: #005ef5;
   background: none;
   border: none;
   cursor: pointer;
@@ -84,8 +88,8 @@ body {
 .event-register-button {
   margin-top: 10px;
   padding: 10px 20px;
-  background-color: #393e46;
-  color: #c5c5c5;
+  background-color: #424874;
+  color: #F4EEFF;
   border: none;
   border-radius: 50px;
 }
@@ -97,11 +101,11 @@ body {
 
 .event-register-button a {
   text-decoration: none;
-  color: #c5c5c5;
+  color: #F4EEFF;
 }
 
 .event-register-button a:visited {
-  color: #c5c5c5;
+  color: #F4EEFF;
 }
 
 .event-browsing-details {
@@ -119,12 +123,12 @@ body {
 }
 
 .event-browsing-detail {
-  background: rgba(158, 153, 153, 0.288);
+  background: rgba(220, 214, 247, 0.2888);
   border-radius: 16px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(7.3px);
   -webkit-backdrop-filter: blur(7.3px);
-  border: 3px solid rgba(255, 255, 255, 0.56);
+  border: 3px solid rgba(220, 214, 247, 0.56);
   margin: 15% auto;
   padding: 20px;
   width: 50%;
@@ -133,6 +137,7 @@ body {
   text-align: center;
   position: relative;
   font-size: 18px;
+  color: #424874;
 }
 
 .close-button {
@@ -144,8 +149,8 @@ body {
   width: 35px;
   height: 35px;
   margin-bottom: 10px;
-  color: #ffffff;
-  background-color: #e21010;
+  color: #DCD6F7;
+  background-color: #424874;
   border-radius: 100%;
   font-size: 32px;
   font-weight: bold;
@@ -154,13 +159,13 @@ body {
 
 .close:hover,
 .close:focus {
-  color: #393e46;
+  color: #424874;
   text-decoration: none;
   cursor: pointer;
 }
 
 .no-event {
-    color: #393e46;
+    color: #424874;
     display: flex;
     align-items: center;
     justify-content: center;

@@ -2,22 +2,11 @@
 session_start();
 require_once('db-user.php');
 
-$search = isset($_GET['search']) ? trim($_GET['search']) : '';
-
 $sql = "SELECT event_id, event_name, date, time, location, description, max_participants, available_slots, image_url, status
         FROM events
         WHERE status = 'open' AND date >= CURDATE()";
 
-if (!empty($search)) {
-    $sql .= " AND event_name LIKE :search";
-}
-
 $stmt = $dbu->prepare($sql);
-
-if (!empty($search)) {
-    $stmt->bindValue(':search', "%$search%");
-}
-
 $stmt->execute();
 $events = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
@@ -64,7 +53,6 @@ $events = $stmt->fetchAll(PDO::FETCH_ASSOC);
                             <p><strong>Location:</strong> <?php echo htmlspecialchars($event['location']); ?></p>
                             <p><strong>Description:</strong> <?php echo htmlspecialchars($event['description']); ?></p>
                             <p><?php echo $event['available_slots'] . '/' . $event['max_participants'] . ' slots left!'; ?></p>
-                            <!-- Register button that passes event_id via GET -->
                             <button type="submit" class="event-register-button">
                                 <a href="event_register.php?event_id=<?php echo $event['event_id']; ?>">Register</a>
                             </button>
@@ -124,12 +112,6 @@ $events = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     document.getElementById('event-detail-<?php echo $key; ?>').style.display = 'none';
                 }
             <?php endforeach; ?>
-        }
-    </script>
-</body>
-
-</html>
-
         }
     </script>
 </body>

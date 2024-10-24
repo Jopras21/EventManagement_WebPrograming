@@ -17,7 +17,7 @@
     <div class="enter-otp-container">
         <div class="enter-otp-section">
             <div class="enter-otp-notes">
-                <h2>Enter OTP</h2>
+                <h1>Enter OTP</h1>
             </div>
             <div class="enter-otp-form">
                 <form action="reset_password.php" method="POST">

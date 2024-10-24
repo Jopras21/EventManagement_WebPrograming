@@ -15,7 +15,7 @@
                 <img src="./assets/img/ticket1.png" alt="ticket" class="ticket">
             </div>
             <div class="user-regist-welcome-text">
-                <h2>Regist to your favourite event now!</h2>
+                <h2>Register to your favourite event now!</h2>
             </div>
         </div>
         <div class="user-regist-page">

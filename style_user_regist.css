@@ -4,7 +4,7 @@
 }
 
 html, body {
-    background-color: #c5c5c5;
+    background-color: #F4EEFF;
     scroll-behavior: smooth;
 }
 
@@ -46,12 +46,12 @@ html, body {
 }
 
 .user-regist-welcome-text {
-    color: #393E46;
+    color: #424874;
     margin-top: 0;
 }
 
 .user-regist-welcome-text h2 {
-    color: #393E46;
+    color: #424874;
     margin-top: 0;
 }
 
@@ -59,7 +59,7 @@ html, body {
 .user-regist-page-buttons {
     display: flex;
     flex-direction: row;
-    background-color: #393E46;
+    background-color: #424874;
     padding: 5px;
     border-radius: 100px;
 }
@@ -68,7 +68,7 @@ html, body {
     margin: 0px;
     padding: 10px 20px;
     background-color: transparent;
-    color: #c5c5c5;
+    color: #F4EEFF;
     border: none;
     background-color: 0.3s ease, color 0.3s ease;
 }
@@ -78,8 +78,8 @@ html, body {
 }
 
 .user-regist-page-button.active button {
-    background-color: #c5c5c5;
-    color: #393E46;
+    background-color: #F4EEFF;
+    color: #424874;
     border-radius: 100px;
 }
 
@@ -109,7 +109,7 @@ html, body {
 
 .user-rl-section input {
     border: none;
-    background-color: #bcbcbc;
+    background-color: #DCD6F7;
     padding: 5px 10px;
     height: 30px;
     border-radius: 5px;
@@ -123,8 +123,8 @@ html, body {
 }
 
 .user-rl-section form button {
-    background-color: #393E46;
-    color: #c5c5c5;
+    background-color: #424874;
+    color: #F4EEFF;
     border: none;
     border-radius: 5px;
     height: 40px;
@@ -132,19 +132,19 @@ html, body {
 }
 
 input:-webkit-autofill {
-    -webkit-box-shadow: 0 0 0px 1000px #bcbcbc inset !important; 
+    -webkit-box-shadow: 0 0 0px 1000px #DCD6F7 inset !important; 
 }
 
 .user-rl-addition {
     margin-top: 15px;
     display: flex;
     align-items: center;
-    color: #393E46;
+    color: #424874;
     width: 100%;
 }
 
 .user-rl-addition a {
-    color: #393E46;
+    color: #424874;
     text-decoration: none;
     font-size: 14px;
     width: 100%;
@@ -157,7 +157,7 @@ input:-webkit-autofill {
 }
 
 .user-rl-addition a:visited {
-    color: #393E46;
+    color: #424874;
 }
 
 /* forgot password pages */
@@ -166,13 +166,13 @@ input:-webkit-autofill {
     justify-content: center;
     align-items: center;
     font-family: font1;
-    color: #393E46;
+    color: #424874;
     margin: 40px;
     top: 50%;
     transform: translateY(50%);
 }
 
-.forgot-password-section {
+.forgot-password-section, .enter-otp-section {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -187,7 +187,7 @@ input:-webkit-autofill {
     flex-direction: column;
 }
 
-.forgot-password-form {
+.forgot-password-form, .enter-otp-form {
     width: 70%;
     display: flex;
     flex-direction: column;
@@ -207,7 +207,7 @@ input:-webkit-autofill {
 
 .forgot-password-form input, .enter-otp-form input {
     border: none;
-    background-color: #bcbcbc;
+    background-color: #DCD6F7;
     padding: 5px 10px;
     height: 30px;
     border-radius: 5px;
@@ -221,13 +221,14 @@ input:-webkit-autofill {
 .forgot-password-form input:focus, .enter-otp-form input:focus {
     outline: none;
     text-align: center;
+    color: #424874;
 }
 
 .forgot-password-form button, .enter-otp-form button {
     margin: 0px;
     padding: 10px 20px;
-    background-color: #393E46;
-    color: #c5c5c5;
+    background-color: #424874;
+    color: #F4EEFF;
     border: none;
     background-color: 0.3s ease, color 0.3s ease;
     border-radius: 100px;
