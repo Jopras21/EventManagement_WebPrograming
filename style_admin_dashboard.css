@@ -1,0 +1,115 @@
+@font-face {
+    font-family: font1;
+    src: url(georgiai.ttf);
+}
+
+html, body {
+    background-color: #F4EEFF;
+    scroll-behavior: smooth;
+}
+
+
+.admin-dashboard-container h1 {
+    font-family: font1;
+    font-size: 40px;
+    color: #424874;
+}
+
+.admin-dashboard-container {
+    font-family: Arial, Helvetica, sans-serif;
+    color: #424874;
+    margin: 20px;
+}
+
+.admin-dashboard-overview {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.admin-dashboard-overview h2 {
+    font-size: 30px;
+}
+
+.admin-dashboard-open-events,
+.admin-dashboard-cancel-events,
+.admin-dashboard-active-users,
+.admin-dashboard-registered-events {
+    flex: 1 1 calc(20% - 25px); 
+    background: #dcd6f7;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+}
+
+.admin-dashboard-action-choice {
+    display: flex;
+    flex-direction: row;
+    margin-top: 20px;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.admin-manage-container {
+    flex: 1 1 calc(20% - 25px); 
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background-color: #424874;
+    color: #F4EEFF;
+    padding: 20px;
+    border-radius: 20px;
+}
+
+.admin-dashboard-event-cards {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-between;
+}
+
+.event-card {
+    flex: 1 1 calc(40% - 20px); 
+    background-color: #dcd6f7;
+    border-radius: 8px;
+    padding: 20px; 
+    transition: transform 0.2s;
+    color: #424874; 
+}
+
+.event-card:hover {
+    transform: scale(1.02); 
+}
+
+.event-card h3 {
+    margin: 0; 
+    font-size: 24px; 
+}
+
+.event-card p {
+    margin: 5px 0 0; 
+    font-size: 18px; 
+}
+
+.admin-manage-container button {
+    margin-top: 0;
+    padding: 10px 20px;
+    background-color: #F4EEFF;
+    color: #424874;
+    border: none;
+    border-radius: 50px;
+}
+
+.admin-manage-container button:hover {
+    cursor: pointer;
+}
+
+.admin-manage {
+    text-decoration: none;
+    color: #424874;
+}
+
+.admin-manage:visited {
+    color: #424874;
+}

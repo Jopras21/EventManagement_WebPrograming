@@ -14,14 +14,14 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
 if (!$row) {
     header('location: index.php?error=not_found');
-    exit;
+    exit();
 } else {
     if (!password_verify($password, $row['password'])) {
-        // Jika password salah, set cookie singkat (5 detik)
+        // Jika password salah, set cookie singkat 
         setcookie("email", $email, time() + (5), "/");
         setcookie("username", $username, time() + (5), "/");
         header('location: index.php?error=wrong_password');
-        exit;
+        exit();
     } else {
 
         $_SESSION['user_id'] = $row['user_id'];
@@ -34,7 +34,7 @@ if (!$row) {
         } else {
             header('location: event_browsing.php');  
         }
-        exit;
+        exit();
     }
 }
 ?>

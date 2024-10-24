@@ -1,0 +1,53 @@
+@font-face {
+    font-family: font1;
+    src: url(georgiai.ttf);
+}
+
+html, body {
+    background-color: #F4EEFF;
+    scroll-behavior: smooth;
+    height: 90%;
+}
+
+.event-registration-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    color: #424874;
+}
+
+.event-registration-container h1 {
+    font-family: font1;
+}
+
+.event-registration-container p {
+    margin: 10px 0 30px;
+    font-size: 20px;
+}
+.event-registration-choice a {
+    text-decoration: none;
+}
+
+.event-registration-container button {
+    margin: 10px 15px;
+    padding: 10px 20px;
+    background-color: #424874;
+    color: #f4f4f4;
+    border: none;
+    border-radius: 50px;
+}
+
+.event-registration-container button:hover {
+    cursor: pointer;
+}
+
+.event-registration-container button a {
+    text-decoration: none;
+    color: #f4f4f4;
+}
+
+.event-registration-container button a:visited {
+    color: #F4EEFF;
+}

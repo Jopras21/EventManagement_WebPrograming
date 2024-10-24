@@ -36,7 +36,7 @@ if ($participation) {
     $insertStmt = $dbu->prepare("INSERT INTO participate (event_id, user_id) VALUES (:event_id, :user_id)");
     $insertStmt->bindParam(':event_id', $event_id, PDO::PARAM_INT);
     $insertStmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
-    
+
     if ($insertStmt->execute()) {
         $updateStmt = $dbu->prepare("UPDATE events SET available_slots = available_slots - 1 WHERE event_id = :event_id");
         $updateStmt->bindParam(':event_id', $event_id, PDO::PARAM_INT);
@@ -58,15 +58,21 @@ if ($participation) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Event Registration</title>
-    <link rel="stylesheet" href="style_event_browse.css">
+    <link rel="stylesheet" href="style_event_register.css">
 </head>
 
 <body>
-    <div class="registration-container">
+    <div class="event-registration-container">
         <h1>Event Registration</h1>
         <p><?php echo htmlspecialchars($message); ?></p>
-
-        <p><a href="event_browsing.php">Back to Event Browsing</a></p>
+        <div class="event-registration-choice">
+            <button> <a href="cancel_registration.php">Cancel Registration</a>
+            </button>
+            <button> <a href="event_browsing.php">Back to Event Browsing</a>
+            </button>
+            <button> <a href="event_registered_detail.php">View Registered Event</a>
+            </button>
+        </div>
     </div>
 </body>
 
