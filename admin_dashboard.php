@@ -113,8 +113,9 @@ $username = $_SESSION['username'];
                 <button><a href="user_management.php" class="admin-manage">Manage User</a></button>
             </div>
         </div>
-
-        <a href="logout.php" class="logout-btn">Logout</a>
+        <div class="logout-button">
+            <a href="logout.php" class="logout-btn">Logout</a>
+        </div>
     </div>
 </body>
 

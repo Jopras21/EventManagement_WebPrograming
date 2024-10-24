@@ -113,3 +113,16 @@ html, body {
 .admin-manage:visited {
     color: #424874;
 }
+
+.logout-button {
+    margin: 20px 0;
+}
+
+.logout-btn {
+    text-decoration: none;
+    background-color: rgb(227, 10, 10);
+    padding: 10px 20px;
+    color: white;
+    margin: 20px 10px;
+    border-radius: 15px;
+}
