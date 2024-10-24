@@ -66,7 +66,7 @@ if ($participation) {
         <h1>Event Registration</h1>
         <p><?php echo htmlspecialchars($message); ?></p>
         <div class="event-registration-choice">
-            <button> <a href="cancel_registration.php">Cancel Registration</a>
+            <button> <a href="cancel_registration.php?event_id=<?php echo $event_id; ?>">Cancel Registration</a>
             </button>
             <button> <a href="event_browsing.php">Back to Event Browsing</a>
             </button>

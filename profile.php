@@ -40,8 +40,8 @@ if ($biodata_data) {
 
 if ($role === 'user') {
     $stmt = $conn->prepare("SELECT e.event_name, e.date, e.location FROM events e 
-                            INNER JOIN event_participants ep ON e.event_id = ep.event_id 
-                            WHERE ep.user_id = ?");
+                            INNER JOIN participate p ON e.event_id = p.event_id 
+                            WHERE p.user_id = ?");
     $stmt->bind_param('i', $user_id); 
     $stmt->execute();
     $result = $stmt->get_result();
