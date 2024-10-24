@@ -4,7 +4,7 @@ require_once('db-user.php');
 
 $search = isset($_GET['search']) ? trim($_GET['search']) : '';
 
-$sql = "SELECT event_name, date, time, location, description, max_participants, available_slots, image_url, status
+$sql = "SELECT event_id, event_name, date, time, location, description, max_participants, available_slots, image_url, status
         FROM events
         WHERE status = 'open' AND date >= CURDATE()";
 
@@ -43,12 +43,12 @@ $events = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <?php if (count($events) > 0): ?>
                 <?php foreach ($events as $key => $event): ?>
                     <div class="event-browsing-content">
-                        <h2><?php echo ($event['event_name']); ?></h2><br>
+                        <h2><?php echo htmlspecialchars($event['event_name']); ?></h2><br>
                         <?php
                         $date = date("j F Y", strtotime($event['date']));
                         echo $date; ?><br>
-                        <?php echo ($event['time']); ?><br>
-                        <?php echo ($event['location']); ?><br>
+                        <?php echo htmlspecialchars($event['time']); ?><br>
+                        <?php echo htmlspecialchars($event['location']); ?><br>
                         <button class="detail-button" onclick="showDetail(<?php echo $key; ?>)">View Details</button>
                     </div>
 
@@ -57,14 +57,17 @@ $events = $stmt->fetchAll(PDO::FETCH_ASSOC);
                             <div class="close-button">
                                 <span class="close" id="close" onclick="closeDetail(<?php echo $key; ?>)">&times;</span>
                             </div>
-                            <img src="uploads/<?php echo $event['image_url']; ?>" alt="Image" style="max-width: 360px">
-                            <h2><?php echo ($event['event_name']); ?></h2>
+                            <img src="uploads/<?php echo htmlspecialchars($event['image_url']); ?>" alt="Event Image" style="max-width: 360px">
+                            <h2><?php echo htmlspecialchars($event['event_name']); ?></h2>
                             <p><strong>Date:</strong> <?php echo $date; ?></p>
-                            <p><strong>Time:</strong> <?php echo ($event['time']); ?></p>
-                            <p><strong>Location:</strong> <?php echo ($event['location']); ?></p>
-                            <p><strong>Description:</strong> <?php echo ($event['description']); ?></p>
+                            <p><strong>Time:</strong> <?php echo htmlspecialchars($event['time']); ?></p>
+                            <p><strong>Location:</strong> <?php echo htmlspecialchars($event['location']); ?></p>
+                            <p><strong>Description:</strong> <?php echo htmlspecialchars($event['description']); ?></p>
                             <p><?php echo $event['available_slots'] . '/' . $event['max_participants'] . ' slots left!'; ?></p>
-                            <button type="submit" class="event-register-button"><a href="event_register.php">Register</a></button>
+                            <!-- Register button that passes event_id via GET -->
+                            <button type="submit" class="event-register-button">
+                                <a href="event_register.php?event_id=<?php echo $event['event_id']; ?>">Register</a>
+                            </button>
                         </div>
                     </div>
                 <?php endforeach; ?>
@@ -80,24 +83,18 @@ $events = $stmt->fetchAll(PDO::FETCH_ASSOC);
             const eventContents = document.querySelectorAll('.event-browsing-content');
             
             eventContents.forEach(eventContent => {
-                // Ambil teks yang ingin dicari (nama event dan lokasi)
                 const eventName = eventContent.querySelector('h2').textContent.toLowerCase();
                 const eventLocation = eventContent.textContent.toLowerCase();
                 
-                // Cek apakah teks mengandung kata yang dicari
                 if (eventName.includes(filter) || eventLocation.includes(filter)) {
-                    eventContent.style.display = ''; // Tampilkan event jika cocok
-                    
-                    // Cari detail event yang terkait
+                    eventContent.style.display = '';
                     const eventId = eventContent.querySelector('.detail-button').getAttribute('onclick').match(/\d+/)[0];
                     const relatedDetail = document.getElementById('event-detail-' + eventId);
                     if (relatedDetail) {
-                        relatedDetail.style.display = 'none'; // Sembunyikan detail yang terbuka
+                        relatedDetail.style.display = 'none';
                     }
                 } else {
-                    eventContent.style.display = 'none'; // Sembunyikan event jika tidak cocok
-                    
-                    // Cari dan sembunyikan detail event yang terkait
+                    eventContent.style.display = 'none';
                     const eventId = eventContent.querySelector('.detail-button').getAttribute('onclick').match(/\d+/)[0];
                     const relatedDetail = document.getElementById('event-detail-' + eventId);
                     if (relatedDetail) {
@@ -107,7 +104,6 @@ $events = $stmt->fetchAll(PDO::FETCH_ASSOC);
             });
         });
 
-        // Tambahkan fungsi untuk membersihkan pencarian
         function clearSearch() {
             document.getElementById('event-filter').value = '';
             const event = new Event('input');
@@ -128,6 +124,12 @@ $events = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     document.getElementById('event-detail-<?php echo $key; ?>').style.display = 'none';
                 }
             <?php endforeach; ?>
+        }
+    </script>
+</body>
+
+</html>
+
         }
     </script>
 </body>
