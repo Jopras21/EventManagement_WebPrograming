@@ -1,11 +1,16 @@
 <?php
 require_once('db-user.php');
 
+function sanitize_input($data)
+{
+        return htmlspecialchars(trim($data), ENT_QUOTES, 'UTF-8');
+}
+
 // ambil data
-$name = $_POST['name'];
-$username = $_POST['username'];
-$email = $_POST['email'];
-$password = $_POST['password'];
+$name = sanitize_input($_POST['name']);
+$username = sanitize_input($_POST['username']);
+$email = filter_var(trim($_POST['email']), FILTER_SANITIZE_EMAIL); 
+$password = trim($_POST['password']); 
 
 // periksa data user
 $sql = "SELECT * FROM user 

@@ -2,9 +2,13 @@
 session_start();
 require_once('db-user.php');
 
-$email = $_POST['email'];
-$username = $_POST['username'];
-$password = $_POST['password'];
+function sanitize_input($data) {
+    return htmlspecialchars(trim($data));
+}
+
+$email = sanitize_input($_POST['email']);
+$username = sanitize_input($_POST['username']);
+$password = trim($_POST['password']);
 
 // checking
 $sql = "SELECT * FROM user WHERE username = ? AND email = ?";
@@ -23,7 +27,7 @@ if (!$row) {
         header('location: index.php?error=wrong_password');
         exit();
     } else {
-
+        session_regenerate_id(true);
         $_SESSION['user_id'] = $row['user_id'];
         $_SESSION['email'] = $row['email'];
         $_SESSION['username'] = $row['username'];
