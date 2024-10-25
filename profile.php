@@ -75,7 +75,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['pfp'])) {
         $stmt->bind_param('si', $target_file, $user_id);
         if ($stmt->execute()) {
             $_SESSION['message'] = "Profile picture updated successfully!";
-            $pfp = $target_file; // Update to the new image path
+            $pfp = $target_file;
         } else {
             $_SESSION['message'] = "Error updating database.";
         }
@@ -87,26 +87,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['pfp'])) {
     $foto_tmp = $_FILES['pfp']['tmp_name'];
     $target_dir = 'uploads/' . $foto_name;
     $target_file = $target_dir . basename($_FILES["pfp"]["name"]);
-    
-    // if (move_uploaded_file($_FILES["pfp"]["tmp_name"], $target_file)) {
-    //     $stmt = $conn->prepare("UPDATE data_user SET pfp = ? WHERE user_id = ?");
-    //     if ($stmt) {
-    //         $stmt->bind_param('si', $target_file, $user_id);
-    //         if ($stmt->execute()) {
-    //             echo "Profile picture updated successfully!";
-    //         } else {
-    //             echo "Error updating database: " . $stmt->error;
-    //         }
-    //     } else {
-    //         echo "Error preparing statement.";
-    //     }
-    // } else {
-    //     echo "Error uploading file.";
-    // }
 }
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['delete_pfp'])) {
-    // Remove profile picture from the server
     if (file_exists($pfp)) {
         unlink($pfp); 
     }
@@ -124,6 +107,56 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['delete_pfp'])) {
         $_SESSION['message'] = "Error preparing statement.";
     }
 }
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Ambil data dari form
+    $name = $_POST['name'];
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+    $birth_date = $_POST['birth_date'];
+    $phone_number = $_POST['phone_number'];
+    $gender = $_POST['gender'];
+    $hobbies = $_POST['hobbies'];
+
+    // Update tabel user
+    if (!empty($name) && !empty($email)) {
+        if (!empty($password)) {
+            $hashed_password = password_hash($password, PASSWORD_BCRYPT);
+
+            $stmt = $conn->prepare("UPDATE user SET name = ?, email = ?, password = ? WHERE user_id = ?");
+            $stmt->bind_param('sssi', $name, $email, $hashed_password, $user_id);
+        } else {
+            $stmt = $conn->prepare("UPDATE user SET name = ?, email = ? WHERE user_id = ?");
+            $stmt->bind_param('ssi', $name, $email, $user_id);
+        }
+
+        // Eksekusi update untuk tabel user
+        if ($stmt->execute()) {
+            $_SESSION['message'] = "Profile updated successfully!";
+            $_SESSION['username'] = $name;
+            $_SESSION['email'] = $email;
+        } else {
+            $_SESSION['message'] = "Error updating profile.";
+        }
+    } else {
+        $_SESSION['message'] = "Please fill in all required fields.";
+    }
+
+    if (!empty($birth_date) || !empty($phone_number) || !empty($gender) || !empty($hobbies)) {
+        $stmt = $conn->prepare("UPDATE data_user SET tanggal_lahir = ?, nomor_telepon = ?, gender = ?, hobi = ? WHERE user_id = ?");
+        $stmt->bind_param('ssssi', $birth_date, $phone_number, $gender, $hobbies, $user_id);
+
+        if ($stmt->execute()) {
+            $_SESSION['message'] .= " Biodata updated successfully!";
+        } else {
+            $_SESSION['message'] .= " Error updating biodata.";
+        }
+    }
+
+    header('Location: profile.php');
+    exit();
+}
+
 ?>
 
 <?php if (isset($_SESSION['message'])): ?>
@@ -144,16 +177,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['delete_pfp'])) {
     <title>User Profile</title>
 </head>
 <body>
-    <div class="container">
+<div class="container">
         <div class="nav-button">
             <a href="event_management.php">Back</a>
             <a href="logout.php" class="logout-btn">Logout</a>
         </div>
         <div class="profile-header">
             <div class="profile-image">
-            <div class="profile-img">
                 <img src="<?php echo htmlspecialchars($pfp); ?>" alt="Profile Picture">
-            </div>   
                 <form method="post" enctype="multipart/form-data">
                     <input type="file" name="pfp" id="pfp">
                     <button type="submit">Upload New Profile Picture</button>
@@ -163,25 +194,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['delete_pfp'])) {
                 </form>
             </div>
             <div class="profile-info">
-                <h1><?php echo htmlspecialchars($username); ?> (<?php echo htmlspecialchars($role); ?>)</h1>
-                <p>Email        : <?php echo htmlspecialchars($email); ?></p>
-                <?php if ($birth_date): ?>
-                    <p>Date of Birth        : <?php echo htmlspecialchars($birth_date); ?></p>
-                <?php endif; ?>
-                <?php if ($age)     : ?>
-                    <p>Age: <?php echo htmlspecialchars($age); ?></p>
-                <?php endif; ?>
-                <?php if ($phone_number): ?>
-                    <p>Phone Number     : <?php echo htmlspecialchars($phone_number); ?></p>
-                <?php endif; ?>
-                <?php if ($gender): ?>
-                    <p>Gender       : <?php echo htmlspecialchars($gender); ?></p>
-                <?php endif; ?>
-                <?php if ($hobbies): ?>
-                    <p>Hobbies      : <?php echo htmlspecialchars($hobbies); ?></p>
-                <?php endif; ?>
+                <h1><?php echo htmlspecialchars($username); ?></h1>
+                <p>Email: <?php echo htmlspecialchars($email); ?></p>
+                <p>Birth Date: <?php echo htmlspecialchars($birth_date); ?></p>
+                <p>Phone: <?php echo htmlspecialchars($phone_number); ?></p>
+                <p>Gender: <?php echo htmlspecialchars($gender); ?></p>
+                <p>Hobbies: <?php echo htmlspecialchars($hobbies); ?></p>
+                <button class="edit-button" onclick="openModal()">Edit Profile</button>
             </div>
         </div>
+
         <div class="content">
         <?php if ($role === 'user'): ?>
             <h2>Your Events</h2>
@@ -207,6 +229,61 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['delete_pfp'])) {
             </ul>
         <?php endif; ?>
     </div>
-    </div>
+</div>
+<!-- Modal Structure -->
+<div id="editModal" class="modal">
+            <div class="modal-content">
+                <span class="close-button" onclick="closeModal()">&times;</span>
+                <h2>Edit Profile</h2>
+                <form method="post" action="edit_profile.php">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" value="<?php echo htmlspecialchars($username); ?>" required>
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" value="<?php echo htmlspecialchars($email); ?>" required>
+                    <label for="password">Password (Leave blank if not changing):</label>
+                    <input type="password" id="password" name="password">
+                    <label for="birth_date">Birth Date:</label>
+                    <input type="date" id="birth_date" name="birth_date" value="<?php echo htmlspecialchars($birth_date); ?>">
+                    <label for="phone_number">Phone Number:</label>
+                    <input type="text" id="phone_number" name="phone_number" value="<?php echo htmlspecialchars($phone_number); ?>">
+                    <label for="gender">Gender:</label>
+                    <select id="gender" name="gender">
+                        <option value="Male" <?php echo $gender === 'Male' ? 'selected' : ''; ?>>Male</option>
+                        <option value="Female" <?php echo $gender === 'Female' ? 'selected' : ''; ?>>Female</option>
+                        <option value="Other" <?php echo $gender === 'Other' ? 'selected' : ''; ?>>Other</option>
+                    </select>
+                    <label for="hobbies">Hobbies:</label>
+                    <input type="text" id="hobbies" name="hobbies" value="<?php echo htmlspecialchars($hobbies); ?>">
+                    <button type="submit" class="save-button">Save Changes</button>
+                </form>
+            </div>
+        </div>
+
+    <script>
+        // Show/Hide Edit Form
+        document.getElementById('edit-button').addEventListener('click', function() {
+            document.getElementById('edit-form').style.display = 'flex';
+        });
+
+        function openModal() {
+            document.getElementById('editModal').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            document.getElementById('editModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('editModal');
+            if (event.target === modal) {
+                closeModal();
+            }
+        }
+
+    </script>
+
 </body>
 </html>

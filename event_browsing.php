@@ -22,7 +22,8 @@ $events = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 <body>
     <div class="event-browsing-container">
-        <h1>Events for You</h1>   
+        <h1>Events for You</h1>
+        <a href="profile.php">profile</a>   
         <div class="event-browsing-search">
             <input type="text" id="event-filter" name="search" placeholder="Search event by name or location" />
             <button onclick="clearSearch()" class="clear-search">Clear</button>
@@ -39,7 +40,6 @@ $events = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         <?php echo htmlspecialchars($event['location']); ?><br>
                         <button class="detail-button" onclick="showDetail(<?php echo $key; ?>)">View Details</button>
                     </div>
-
                     <div class="event-browsing-details" id="event-detail-<?php echo $key; ?>">
                         <div class="event-browsing-detail">
                             <div class="close-button">
@@ -52,7 +52,6 @@ $events = $stmt->fetchAll(PDO::FETCH_ASSOC);
                             <p><strong>Location:</strong> <?php echo htmlspecialchars($event['location']); ?></p>
                             <p><strong>Description:</strong> <?php echo htmlspecialchars($event['description']); ?></p>
                             <p><?php echo $event['available_slots'] . '/' . $event['max_participants'] . ' slots left!'; ?></p>
-                            <!-- Register button that passes event_id via GET -->
                             <button type="submit" class="event-register-button">
                                 <a href="event_register.php?event_id=<?php echo $event['event_id']; ?>">Register</a>
                             </button>
@@ -64,7 +63,6 @@ $events = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <?php endif; ?>
         </div>
     </div>
-
     <script>
         document.getElementById('event-filter').addEventListener('input', function() {
             const filter = this.value.toLowerCase();
