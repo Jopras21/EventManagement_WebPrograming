@@ -24,10 +24,10 @@ $events = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <div class="event-browsing-container">
         <div class="event-browsing-header">
             <div class="event-browse-button">
-                <a href="profile.php" class="admin-btn">Profile</a>
+                <a href="profile.php" class="user-btn">Profile</a>
             </div>
             <div class="event-browse-button">
-                <a href="logout.php" class="admin-btn">Logout</a>
+                <a href="logout.php" class="user-btn">Logout</a>
             </div>
         </div>
         <h1>Events for You</h1>

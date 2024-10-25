@@ -7,11 +7,16 @@ html,
 body {
   background-color: #F4EEFF;
   scroll-behavior: smooth;
+  margin: 0;
+  padding: 0;
 }
 
 .event-browsing-container {
   width: 100%;
-  margin: 0 auto;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
+
 }
 
 .event-browsing-container h1 {
@@ -24,6 +29,24 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.event-browsing-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  padding: 20px;
+  margin: 0;
+  background-color: #424874;
+}
+
+.user-btn {
+  margin: 20px 0;
+  text-decoration: none;
+  padding: 10px 20px;
+  color: #F4EEFF;
+  margin: 20px 10px;
+  border-radius: 15px;
 }
 
 .event-browsing-contents {
