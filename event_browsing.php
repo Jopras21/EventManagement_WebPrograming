@@ -22,12 +22,19 @@ $events = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 <body>
     <div class="event-browsing-container">
+        <div class="event-browsing-header">
+            <div class="event-browse-button">
+                <a href="profile.php" class="user-btn">Profile</a>
+            </div>
+            <div class="event-browse-button">
+                <a href="logout.php" class="user-btn">Logout</a>
+            </div>
+        </div>
         <h1>Events for You</h1>
-        <a href="profile.php">profile</a>   
         <div class="event-browsing-search">
             <input type="text" id="event-filter" name="search" placeholder="Search event by name or location" />
             <button onclick="clearSearch()" class="clear-search">Clear</button>
-        </div>   
+        </div>
         <div class="event-browsing-contents">
             <?php if (count($events) > 0): ?>
                 <?php foreach ($events as $key => $event): ?>
@@ -67,11 +74,11 @@ $events = $stmt->fetchAll(PDO::FETCH_ASSOC);
         document.getElementById('event-filter').addEventListener('input', function() {
             const filter = this.value.toLowerCase();
             const eventContents = document.querySelectorAll('.event-browsing-content');
-            
+
             eventContents.forEach(eventContent => {
                 const eventName = eventContent.querySelector('h2').textContent.toLowerCase();
                 const eventLocation = eventContent.textContent.toLowerCase();
-                
+
                 if (eventName.includes(filter) || eventLocation.includes(filter)) {
                     eventContent.style.display = '';
                     const eventId = eventContent.querySelector('.detail-button').getAttribute('onclick').match(/\d+/)[0];

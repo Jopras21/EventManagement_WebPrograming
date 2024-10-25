@@ -21,9 +21,9 @@ $stmt_event->close();
 if (isset($_POST['export_csv'])) {
     $stmt = $conn->prepare("
         SELECT user.username, user.email 
-        FROM registrations 
-        JOIN user ON registrations.user_id = user.user_id 
-        WHERE registrations.event_id = ?
+        FROM user 
+        JOIN participate ON participate.user_id = user.user_id 
+        WHERE participate.event_id = ? AND user.role = 'user'
     ");
     $stmt->bind_param("i", $event_id);
     $stmt->execute();
@@ -46,10 +46,10 @@ if (isset($_POST['export_csv'])) {
 }
 
 $stmt = $conn->prepare("
-    SELECT user.username, user.email 
-    FROM registrations 
-    JOIN user ON registrations.user_id = user.user_id 
-    WHERE registrations.event_id = ?
+        SELECT user.username, user.email 
+        FROM user 
+        JOIN participate ON participate.user_id = user.user_id 
+        WHERE participate.event_id = ? AND user.role = 'user'
 ");
 $stmt->bind_param("i", $event_id);
 $stmt->execute();
@@ -132,13 +132,13 @@ $result = $stmt->get_result();
         }
 
         table th {
-            background-color: #28a745;
+            background-color: #424874;
             color: white;
             font-weight: bold;
         }
 
-        table tbody tr:nth-child(even) {
-            background-color: #f9f9f9;
+        table tbody tr {
+            background-color: #F4EEFF;
         }
 
         form {
